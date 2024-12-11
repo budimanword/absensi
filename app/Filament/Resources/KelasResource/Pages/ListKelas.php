@@ -2,9 +2,11 @@
 
 namespace App\Filament\Resources\KelasResource\Pages;
 
-use App\Filament\Resources\KelasResource;
 use Filament\Actions;
+use Filament\Pages\Actions\ButtonAction;
+use App\Filament\Resources\KelasResource;
 use Filament\Resources\Pages\ListRecords;
+
 
 class ListKelas extends ListRecords
 {
@@ -14,6 +16,9 @@ class ListKelas extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+            
         ];
     }
+
+    
 }
