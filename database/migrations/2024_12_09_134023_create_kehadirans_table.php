@@ -12,16 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('kehadirans', function (Blueprint $table) {
-            $table->id(); // Primary key
-            $table->unsignedBigInteger('siswa_id'); // Foreign key ke tabel siswa
-            $table->date('tanggal'); // Tanggal kehadiran
-            $table->time('check_in'); // Waktu scan barcode (check-in)
+            $table->id(); 
+            $table->unsignedBigInteger('siswa_id');
+            $table->date('tanggal'); 
+            $table->time('check_in'); 
             $table->enum('status', ['hadir', 'izin', 'sakit', 'alpa'])->default('hadir'); // Status kehadiran siswa
-            $table->timestamps(); // Kolom created_at dan updated_at
+            $table->unsignedBigInteger('created_by'); // Tambahkan kolom created_by
+            $table->timestamps(); 
 
-            // Foreign key constraint
             $table->foreign('siswa_id')->references('id')->on('siswas')->onDelete('cascade');
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
         });
+        
     }
 
     /**

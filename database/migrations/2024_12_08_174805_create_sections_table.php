@@ -12,13 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('sections', function (Blueprint $table) {
-            $table->id(); // Primary key
-            $table->unsignedBigInteger('class_id'); // Foreign key ke tabel kelas
-            $table->string('name', 255); // Nama section
-            $table->timestamps(); // Kolom created_at dan updated_at
+            $table->id(); 
+            $table->unsignedBigInteger('class_id'); 
+            $table->string('name', 255); 
+            $table->timestamps(); 
             
             // Foreign key constraint
             $table->foreign('class_id')->references('id')->on('kelas')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
         });
     }
 

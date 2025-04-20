@@ -10,12 +10,16 @@ class Siswa extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'options' => 'array',
+    ];
+
     public function kelas(): BelongsTo
     {
         return $this->belongsTo(Kelas::class, 'class_id', 'id');
     }
 
-    public function section()
+    public function section(): BelongsTo
     {
         return $this->belongsTo(Section::class, 'section_id', 'id');
     }
@@ -23,7 +27,7 @@ class Siswa extends Model
 
 
     protected $fillable = [
-        'barcode',      // Barcode unik siswa
+        'nisn',      // Barcode unik siswa
         'name',         // Nama siswa
         'gender',       // Jenis kelamin
         'birth_date',   // Tanggal lahir siswa

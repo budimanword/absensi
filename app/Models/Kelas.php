@@ -12,6 +12,7 @@ class Kelas extends Model
 
     protected $fillable = [
         'name',
+        'tahun_ajaran'
     ];
 
     public function siswas()
@@ -22,6 +23,11 @@ class Kelas extends Model
     public function sections()
     {
         return $this->hasMany(Section::class, 'class_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class); // Pastikan 'user_id' adalah foreign key yang benar
     }
 
 }

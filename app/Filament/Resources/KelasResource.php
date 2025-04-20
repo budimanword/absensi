@@ -20,8 +20,9 @@ use App\Filament\Resources\KelasResource\RelationManagers;
 class KelasResource extends Resource
 {
     protected static ?string $model = Kelas::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Master';
+    protected static ?int $navigationSort = 3 ;
 
     public static function form(Form $form): Form
     {
@@ -30,6 +31,12 @@ class KelasResource extends Resource
                 Forms\Components\TextInput::make('name')
                 ->required()
                 ->maxLength(255),
+
+                Forms\Components\TextInput::make('tahun_ajaran')
+                ->required()
+                ->maxLength(255),
+
+                
 
                 
             ]);
@@ -41,8 +48,7 @@ class KelasResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('sections.name')
-                    ->label('Section')
+                Tables\Columns\TextColumn::make('tahun_ajaran')
                     ->searchable(),
             ])
             ->filters([

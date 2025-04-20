@@ -11,10 +11,17 @@ class Section extends Model
     protected $fillable = [
         'class_id',
         'name',
+        'user_id',
     ];
 
     public function kelas()
     {
         return $this->belongsTo(Kelas::class, 'class_id');
+    }
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class); // Relasi ke model User
     }
 }
